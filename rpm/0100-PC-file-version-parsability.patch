@@ -1,0 +1,36 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ruben De Smet <ruben.de.smet@rubdos.be>
+Date: Sun, 7 Jan 2024 17:42:32 +0100
+Subject: [PATCH] PC file version parsability
+
+---
+ dwarf/Makefile | 2 +-
+ elf/Makefile   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/dwarf/Makefile b/dwarf/Makefile
+index 2d47003778730c4825fddc224c396bd0299e9521..776bf72dabf19d62e31e61565dec71710cd520dc 100644
+--- a/dwarf/Makefile
++++ b/dwarf/Makefile
+@@ -43,7 +43,7 @@ CLEAN += libdwarf++.so
+ # Create pkg-config for local library and headers. This will be
+ # transformed in to the correct global pkg-config by install.
+ libdwarf++.pc: always
+-	@(VER=$$(git describe --match 'v*' | sed -e s/^v//); \
++	@(VER=$$(git describe --match 'v*' --tags --abbrev | sed -e s/^v// | sed -e 's/-//'); \
+ 	  echo "libdir=$$PWD"; \
+ 	  echo "includedir=$$PWD"; \
+ 	  echo ""; \
+diff --git a/elf/Makefile b/elf/Makefile
+index f598328366f98522082f0e50eec87ffd7c41d9fd..9313863b202d4b2cddd82744cf45608538adb31b 100644
+--- a/elf/Makefile
++++ b/elf/Makefile
+@@ -42,7 +42,7 @@ CLEAN += libelf++.so
+ # Create pkg-config for local library and headers. This will be
+ # transformed in to the correct global pkg-config by install.
+ libelf++.pc: always
+-	@(VER=$$(git describe --match 'v*' | sed -e s/^v//); \
++	@(VER=$$(git describe --match 'v*' --tags --abbrev | sed -e s/^v// | sed -e 's/-//'); \
+ 	  echo "libdir=$$PWD"; \
+ 	  echo "includedir=$$PWD"; \
+ 	  echo ""; \

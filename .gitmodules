@@ -1,0 +1,6 @@
+[submodule "coz"]
+	path = coz
+	url = https://github.com/plasma-umass/coz.git
+[submodule "libelfin"]
+	path = libelfin
+	url = https://github.com/antoyo/libelfin
